@@ -21,12 +21,18 @@ const HeaderGeneral = styled.div`
     align-items: center;
 `;
 
+const HeaderNavbar = styled.nav`
+    @media (max-width: 1024px) {
+        display: none;
+    }
+`;
+
 const HeaderLink = styled.a`
     font-family: Montserrat, sans-serif;
     font-weight: 500;
     font-size: 17px;
     color: #000000;
-    padding: 0 25px;
+    padding: 0 20px;
     transition: .4s;
     &:hover {
         text-decoration: underline;
@@ -42,13 +48,13 @@ const Header = () => {
                     <NavLink to={'/'}>
                         <h1>Logo</h1>
                     </NavLink>
-                    <nav className="header-navbar">
+                    <HeaderNavbar className="header-navbar">
                         <NavLink to={'/aboutSchool'}> <HeaderLink>О школе</HeaderLink> </NavLink>
                         <NavLink to={'/admission-rules'}> <HeaderLink>Правила приема</HeaderLink> </NavLink>
                         <NavLink to={'/teaching-staff'}> <HeaderLink>Пед.коллектив</HeaderLink> </NavLink>
                         <NavLink to={'/additional-education'}> <HeaderLink>Доп.образование</HeaderLink> </NavLink>
                         <NavLink to={'/contact'}> <HeaderLink>Контакты</HeaderLink> </NavLink>
-                    </nav>
+                    </HeaderNavbar>
                 </HeaderGeneral>
             </Container>
         </HeaderId>
