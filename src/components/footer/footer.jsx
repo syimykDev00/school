@@ -7,10 +7,26 @@ const FooterId = styled.footer`
     padding: 0 0 20px 0;
 `;
 
+const FooterClass = styled.div`
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+`;
+
 const FooterGeneral = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: start;
+    padding: 20px 0 0 0;
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 `;
 
 const FooterTextTitle = styled.h2`
@@ -19,11 +35,20 @@ const FooterTextTitle = styled.h2`
     font-size: 22px;
     color: #000000;
     padding: 0 0 12px;
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
+    @media (max-width: 400px) {
+        font-size: 18px;
+    }
 `;
 
 const FooterNavbar = styled.nav`
     display: flex;
     flex-direction: column;
+    @media (max-width: 768px) {
+        padding: 10px 0;
+    }
 `;
 
 const FooterLink = styled.a`
@@ -37,6 +62,12 @@ const FooterLink = styled.a`
         text-decoration: underline;
         color: royalblue;
     }
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
+    @media (max-width: 400px) {
+        font-size: 18px;
+    }
 `;
 
 const FooterDescription = styled.p`
@@ -45,13 +76,19 @@ const FooterDescription = styled.p`
     font-weight: 500;
     font-size: 16px;
     padding: 35px 0 0 0;
+    @media (max-width: 1024px) {
+        width: 90%;
+    }
+    @media (max-width: 768px) {
+        padding: 25px 0 0 0;
+    }
 `;
 
 const Footer = () => {
     return (
         <FooterId id="footer">
             <Container className="container">
-                <div className="footer">
+                <FooterClass className="footer">
                     <NavLink to={'/'}>
                         <h1>Logo</h1>
                     </NavLink>
@@ -75,7 +112,7 @@ const Footer = () => {
                         </FooterNavbar>
                     </FooterGeneral>
                     <FooterDescription>© 2025, Автономная некоммерческая организация негосударственная общеобразовательная организация «Наши традиции»</FooterDescription>
-                </div>
+                </FooterClass>
             </Container>
         </FooterId>
     );
