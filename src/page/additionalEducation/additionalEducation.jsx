@@ -1,10 +1,13 @@
 import React from 'react';
+import AdditionalEducationHero from "./additionalEducationHero/additionalEducationHero";
+import AdditionalEducationCourses from "./additionalEducationCourses/additionalEducationCourses";
 
 const AdditionalEducation = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <AdditionalEducationHero />
+            <AdditionalEducationCourses />
+        </>
     );
 };
 
