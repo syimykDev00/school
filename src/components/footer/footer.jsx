@@ -95,7 +95,9 @@ const Footer = () => {
                     </NavLink>
                     <FooterGeneral className="footer-general">
                         <div className="footer-text">
-                            <FooterTextTitle>+996709339443</FooterTextTitle>
+                            <a href="tel: +996509914101">
+                                <FooterTextTitle>+996509914101</FooterTextTitle>
+                            </a>
                             <FooterTextTitle>info@nashitraditsii.kg</FooterTextTitle>
                             <FooterTextTitle>Бишкек, 12мкр.23\1</FooterTextTitle>
                             <FooterTextTitle>Пн-Пт: 9:00-21:00</FooterTextTitle>
