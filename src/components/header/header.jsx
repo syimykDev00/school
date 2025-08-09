@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import logotype from "../../assets/img/logotype.svg";
 
 const HeaderId = styled.header`
   padding: 20px 0;
@@ -122,7 +123,7 @@ const Header = () => {
             <Container>
                 <HeaderGeneral>
                     <NavLink to={'/'}>
-                        <h1>Logo</h1>
+                        <img src={logotype} alt="img"/>
                     </NavLink>
 
                     <HeaderNavbar>
@@ -152,5 +153,6 @@ const Header = () => {
         </HeaderId>
     );
 };
+
 
 export default Header;

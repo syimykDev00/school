@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {Container} from "../header/header";
+import logotype from "../../assets/img/logotype.svg";
 
 const FooterId = styled.footer`
     padding: 0 0 20px 0;
@@ -90,7 +91,7 @@ const Footer = () => {
             <Container className="container">
                 <FooterClass className="footer">
                     <NavLink to={'/'}>
-                        <h1>Logo</h1>
+                        <img src={logotype} alt="img"/>
                     </NavLink>
                     <FooterGeneral className="footer-general">
                         <div className="footer-text">
