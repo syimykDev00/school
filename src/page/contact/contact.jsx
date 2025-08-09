@@ -1,10 +1,15 @@
 import React from 'react';
+import ContactHero from "./contactHero/contactHero";
+import ContactFeedback from "./contactFeedback/contactFeedback";
+import ContactMaps from "./contactMaps/contactMaps";
 
 const Contact = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <ContactHero/>
+            <ContactFeedback/>
+            <ContactMaps/>
+        </>
     );
 };
 
