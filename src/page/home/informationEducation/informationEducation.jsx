@@ -154,6 +154,7 @@ const InformationGroupText = styled.h3`
 `;
 
 const InformationEducationImage = styled.img`
+    cursor: pointer;
     @media (max-width: 1200px) {
         width: 100%;
         height: auto;
