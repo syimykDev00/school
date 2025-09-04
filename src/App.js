@@ -8,6 +8,8 @@ import AddmissionRules from "./page/addmissionRules/addmissionRules";
 import TeachingStaf from "./page/teachingStaf/teachingStaf";
 import AdditionalEducation from "./page/additionalEducation/additionalEducation";
 import Contact from "./page/contact/contact";
+import GetZapros from "./components/getZapros/getZapros";
+import GetTokenZapros from "./components/getTokenZapros/getTokenZapros";
 
 const App = () => {
     return (
@@ -21,6 +23,8 @@ const App = () => {
                 <Route path={'/additional-education'} element={<AdditionalEducation/>}/>
                 <Route path={'/contact'} element={<Contact/>}/>
             </Routes>
+            <GetZapros/>
+            {/*<GetTokenZapros/>*/}
             <Footer/>
         </>
     );
