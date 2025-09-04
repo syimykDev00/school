@@ -28,6 +28,8 @@ const StepBox = styled.div`
     flex-direction: column;
     align-items: flex-start;
     min-height: auto;
+    background-color: white;
+    box-shadow: none;
   }
 `;
 
@@ -87,6 +89,7 @@ const Button = styled.button`
   @media (max-width: 600px) {
     width: 100%;
     text-align: center;
+    background-color: rgba(103, 212, 255, 1);
   }
 `;
 
