@@ -1,60 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTeachers } from "../../../store/teachersSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styled from "styled-components";
-import images from "../../../assets/img_teaching_staff/Rectangle 1627.png";
+// import images from "../../../assets/img_teaching_staff/Rectangle 1627.png";
 const AdministrationSlider = () => {
-  const people = [
-    {
-      id: 1,
-      name: "Бакытбекова Гулина Канатбековна",
-      position: "Директор",
-      image: images, // замените на ваш путь
-    },
-    // можно дублировать для примера
-    {
-      id: 2,
-      name: "Бакытбекова Гулина Канатбековна",
-      position: "Директор",
-      image: images,
-    },
-    {
-      id: 3,
-      name: "Бакытбекова Гулина Канатбековна",
-      position: "Директор",
-      image: images,
-    },
-    {
-      id: 4,
-      name: "Бакытбекова Гулина Канатбековна",
-      position: "Директор",
-      image: images,
-    },
-  ];
+  const dispatch = useDispatch();
+  const {
+    data: teachers,
+    status,
+    error,
+  } = useSelector((state) => state.teachers);
+
+  useEffect(() => {
+    dispatch(fetchTeachers());
+  }, [dispatch]);
+
+  if (status === "loading") return <p>Жүктөлүүдө...</p>;
+  if (status === "failed") return <p>Ката: {error}</p>;
 
   return (
     <Container>
-      <Title>Администрация</Title>
+      <Title>Учителя</Title>
       <Swiper
         modules={[Pagination]}
         spaceBetween={30}
         slidesPerView={3}
-        // pagination={{ clickable: false }}
         breakpoints={{
           320: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
       >
-        {people.map((person) => (
-          <SwiperSlide key={person.id}>
+        {teachers.map((teacher) => (
+          <SwiperSlide key={teacher.id}>
             <Card>
-              <Image src={person.image} alt={person.name} />
-              <Name>{person.name}</Name>
-              <Position>{person.position}</Position>
+              <Image src={teacher.photo} alt={teacher.name} />
+              <Name>{teacher.name}</Name>
+              <Position>{teacher.subject}</Position>
             </Card>
           </SwiperSlide>
         ))}
@@ -85,7 +71,8 @@ const Card = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: auto;
+  height: 500px; /* фиксированная высота для всех */
+  object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
 `;
