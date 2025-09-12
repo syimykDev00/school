@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { fetchTuition } from "../../store/GetPriceSlice";
 
 const Container = styled.div`
   max-width: 1200px;
@@ -51,28 +53,45 @@ const Price = styled.span`
 `;
 
 const TuitionSection = () => {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.price);
+
+  useEffect(() => {
+    dispatch(fetchTuition());
+  }, [dispatch]);
+
+  if (status === "loading") return <p>Жүктөлүүдө...</p>;
+  if (status === "failed") return <p>Ката: {error}</p>;
+
+  const firstColumn = data.filter(
+    (item) => item.title === "Школа" || item.title === "Питание"
+  );
+  const secondColumn = data.filter(
+    (item) => item.title === "Дошкольное отделение"
+  );
+
   return (
     <Container>
       <Title>Стоимость обучения</Title>
       <PricesWrapper>
         <Column>
-          <Item>
-            <Label>Школа</Label>
-            <SubText>2-й и последующие дети - 10%</SubText>
-            <Price>134 000 сом год</Price>
-          </Item>
-          <Item>
-            <Label>Питание</Label>
-            <SubText>Питание - 28 000 сом месяц</SubText>
-          </Item>
+          {firstColumn.map((item) => (
+            <Item key={item.id}>
+              <Label>{item.title}</Label>
+              {item.note && <SubText>{item.note}</SubText>}
+              <Price>{Number(item.amount).toLocaleString("ru-RU")} сом</Price>
+            </Item>
+          ))}
         </Column>
 
         <Column>
-          <Item>
-            <Label>Дошкольное отделение</Label>
-            <SubText>2-й и последующие дети - 10%</SubText>
-            <Price>134 000 сом год</Price>
-          </Item>
+          {secondColumn.map((item) => (
+            <Item key={item.id}>
+              <Label>{item.title}</Label>
+              {item.note && <SubText>{item.note}</SubText>}
+              <Price>{Number(item.amount).toLocaleString("ru-RU")} сом</Price>
+            </Item>
+          ))}
         </Column>
       </PricesWrapper>
     </Container>
