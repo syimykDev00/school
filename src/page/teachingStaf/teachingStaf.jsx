@@ -13,10 +13,10 @@ const TeachingStaf = () => {
       <TheMainStaff />
       <OurTeachers />
       <AdministrationSlider />
-      <PrimarySchoolDepartament />
-      <OfHumanities />
-      <Psychological />
-      <Curators />
+      {/* <PrimarySchoolDepartament /> */}
+      {/* <OfHumanities /> */}
+      {/* <Psychological /> */}
+      {/* <Curators /> */}
     </div>
   );
 };
