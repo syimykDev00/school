@@ -78,8 +78,6 @@ const CardText = styled.h3`
   font-size: 23px;
 `;
 
-// ===== Component =====
-
 const InformationEducation = () => {
   const dispatch = useDispatch();
   const { data, status, error } = useSelector((state) => state.education);
