@@ -1,8 +1,6 @@
-// store/teachersSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ApiFetch from "../api/ApiFetch";
 
-// GET запрос мугалимдерди алуу үчүн
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
   async () => {
@@ -18,7 +16,7 @@ const teachersSlice = createSlice({
   name: "teachers",
   initialState: {
     data: [],
-    status: "idle", // idle | loading | succeeded | failed
+    status: "idle",
     error: null,
   },
   reducers: {},

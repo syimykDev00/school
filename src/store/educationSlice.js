@@ -1,8 +1,6 @@
-// store/educationSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ApiFetch from "../api/ApiFetch";
 
-// GET запрос (курстарды алуу)
 export const fetchEducation = createAsyncThunk(
   "education/fetchCourses",
   async () => {

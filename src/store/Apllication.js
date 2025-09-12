@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ApiFetch, { appFile } from "../api/ApiFetch";
 
-// форма жөнөтүү
 export const sendBookingForm = createAsyncThunk(
   "booking/sendBookingForm",
   async (formData) => {
@@ -11,17 +10,15 @@ export const sendBookingForm = createAsyncThunk(
       body: formData,
     });
     console.log(data);
-    // сервер берген idди payload’ка кошуп кайтарабыз
     return data;
   }
 );
 
-// PDF жөнөтүү (FormData)
 export const sendBookingFile = createAsyncThunk(
   "booking/sendBookingFile",
   async ({ file, id }) => {
     const formData = new FormData();
-    formData.append("pdf", file); // 👈 backend күткөн ат: pdf
+    formData.append("pdf", file);
     console.log("FormData payload:", [...formData]);
 
     const data = await appFile({

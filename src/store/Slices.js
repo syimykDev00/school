@@ -12,9 +12,9 @@ export const getCardById = createAsyncThunk(
   }
 );
 const initialState = {
-  teachers: null, // APIден келген маалымат
-  status: null, // 'pending' | 'success' | 'error'
-  error: null, // ката болсо сактоо
+  teachers: null,
+  status: null,
+  error: null,
 };
 
 const getTeachers = createSlice({

@@ -1,8 +1,6 @@
-// store/priceSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ApiFetch from "../api/ApiFetch";
 
-// GET запрос
 export const fetchTuition = createAsyncThunk("price/fetchTuition", async () => {
   const data = await ApiFetch({
     url: "api/v1/tuition/",

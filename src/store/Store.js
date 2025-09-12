@@ -1,4 +1,3 @@
-// store/index.js
 import { configureStore } from "@reduxjs/toolkit";
 import bookingReducer from "./Apllication";
 import priceReducer from "./GetPriceSlice";
@@ -10,7 +9,7 @@ export const store = configureStore({
     booking: bookingReducer,
     price: priceReducer,
     teachers: teachersReducer,
-    education: educationReducer, // 👈 education slice ушул жерде
+    education: educationReducer,
     school: school,
   },
 });
