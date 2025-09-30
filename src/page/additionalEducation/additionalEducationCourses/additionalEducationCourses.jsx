@@ -1,12 +1,6 @@
-import React from 'react';
-import InformationImageOne from "./../../../assets/img/informationImageOne.png";
-import InformationImageTwo from "./../../../assets/img/informationImageTwo.png";
-import InformationImageThree from "./../../../assets/img/informationImageThree.png";
-import InformationImageFour from "./../../../assets/img/informationImageFour.png";
-import InformationImageFive from "./../../../assets/img/informationImageFive.png";
-import InformationImageSix from "./../../../assets/img/informationImageSix.png";
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import {Container} from "../../../components/header/header";
+import { Container } from "../../../components/header/header";
 
 const InformationEducationId = styled.section`
     padding: 60px 0 70px 0;
@@ -19,7 +13,7 @@ const InformationEducationGeneral = styled.div`
     align-items: center;
     @media (max-width: 768px) {
         flex-direction: column;
-        
+
     }
 `;
 
@@ -48,6 +42,9 @@ const InformationGroupText = styled.h3`
 `;
 
 const InformationEducationImage = styled.img`
+    width: 398px;
+    height: 518px;
+    object-fit: cover;
     cursor: pointer;
     @media (max-width: 1200px) {
         width: 100%;
@@ -64,36 +61,45 @@ const InformationEducationImage = styled.img`
 `;
 
 const InformationEducation = () => {
+    const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("https://school-project-2-q333.onrender.com/api/v1/extra-courses/?format=json")
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Ошибка HTTP: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data) => {
+                setCourses(data);
+            })
+            .catch((err) => {
+                console.error("❌ Ошибка запроса:", err);
+            })
+            .finally(() => setLoading(false));
+    }, []);
+
     return (
         <InformationEducationId id="informationEducation">
             <Container className="container">
                 <div className="informationEducation">
-                    <InformationEducationGeneral className="informationEducation-general">
-                        <InformationEducationGroup className="informationEducation-group">
-                            <InformationEducationImage src={InformationImageOne} alt="img"/>
-                            <InformationGroupText>Информатика</InformationGroupText>
-                        </InformationEducationGroup>
-                        <InformationEducationGroup className="informationEducation-group">
-                            <InformationEducationImage src={InformationImageTwo} alt="img"/>
-                            <InformationGroupText>SMM</InformationGroupText>
-                        </InformationEducationGroup>
-                        <InformationEducationGroup className="informationEducation-group">
-                            <InformationEducationImage src={InformationImageThree} alt="img"/>
-                            <InformationGroupText>Рисование</InformationGroupText>
-                        </InformationEducationGroup>
-                        <InformationEducationGroup className="informationEducation-group">
-                            <InformationEducationImage src={InformationImageFour} alt="img"/>
-                            <InformationGroupText>Танцы</InformationGroupText>
-                        </InformationEducationGroup>
-                        <InformationEducationGroup className="informationEducation-group">
-                            <InformationEducationImage src={InformationImageFive} alt="img"/>
-                            <InformationGroupText>Шахматы</InformationGroupText>
-                        </InformationEducationGroup>
-                        <InformationEducationGroup className="informationEducation-group">
-                            <InformationEducationImage src={InformationImageSix} alt="img"/>
-                            <InformationGroupText>Гитара</InformationGroupText>
-                        </InformationEducationGroup>
-                    </InformationEducationGeneral>
+                    {loading ? (
+                        <p></p>
+                    ) : (
+                        <InformationEducationGeneral>
+                            {courses.map((course) => (
+                                <InformationEducationGroup key={course.id}>
+                                    <InformationEducationImage
+                                        src={course.image}
+                                        alt={course.png}
+                                    />
+                                    <InformationGroupText>{course.title}</InformationGroupText>
+                                </InformationEducationGroup>
+                            ))}
+                        </InformationEducationGeneral>
+                    )}
                 </div>
             </Container>
         </InformationEducationId>

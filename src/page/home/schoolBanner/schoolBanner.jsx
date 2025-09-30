@@ -19,7 +19,7 @@ const BannerWrapper = styled.div`
 
 const SlidingContent = styled.div`
   display: inline-flex;
-  animation: ${scroll} 14s linear infinite;
+  animation: ${scroll} 25s linear infinite;
 `;
 
 const TextBlock = styled.div`
