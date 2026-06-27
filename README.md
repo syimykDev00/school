@@ -12,15 +12,12 @@ https://school-seven-pied.vercel.app/
 ## 🛠 Tech Stack
 - React
 - JavaScript
-- CSS
-- Framer Motion
-
+- Styled-components
 ---
 
 ## ✨ Features
 - Fully responsive design
 - Modern UI/UX
-- Smooth animations
 - Mobile burger menu
 - Clean component structure
 
